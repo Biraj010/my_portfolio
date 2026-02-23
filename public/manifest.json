@@ -1,0 +1,26 @@
+{
+  "name": "Biraj Regmi - Full Stack Developer Portfolio",
+  "short_name": "BR Portfolio",
+  "description": "Full-stack web developer specializing in MERN stack, Next.js, and Blockchain development",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050816",
+  "theme_color": "#915EFF",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["portfolio", "developer", "technology"],
+  "lang": "en-US",
+  "dir": "ltr"
+}

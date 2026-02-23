@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+"use client";
+
+import { useState } from "react";
 import { Link } from "react-scroll";
-import { portfolioData } from "../data";
+import { portfolioData } from "@/lib/data";
 
 const Header = () => {
   const { navLinks } = portfolioData.header;
@@ -36,7 +38,6 @@ const Header = () => {
                 offset={-70}
                 spy={true}
                 activeClass="text-white"
-                hash={true}
               >
                 {link.text}
               </Link>
@@ -71,7 +72,6 @@ const Header = () => {
                     offset={-70}
                     spy={true}
                     activeClass="text-white"
-                    hash={true}
                   >
                     {link.text}
                   </Link>

@@ -1,6 +1,8 @@
-import React, { useEffect, useRef } from "react";
+"use client";
+
+import { useEffect, useRef } from "react";
 import Typed from "typed.js";
-import { portfolioData } from "../data";
+import { portfolioData } from "@/lib/data";
 import { Link } from "react-scroll";
 
 const Hero = () => {
@@ -54,7 +56,6 @@ const Hero = () => {
               className="bg-[#915EFF] text-white font-bold py-3 px-8 rounded-xl hover:bg-[#804dee] transition-all cursor-pointer inline-block"
               spy={true}
               activeClass="text-accent"
-              hash={true}
             >
               View My Work
             </Link>

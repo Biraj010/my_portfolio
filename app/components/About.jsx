@@ -1,6 +1,5 @@
-import React from "react";
-import myphoto from "../assets/img/myphoto.jpg";
-import { portfolioData } from "../data";
+import Image from "next/image";
+import { portfolioData } from "@/lib/data";
 
 const About = () => {
   const { paragraph, personalInfo } = portfolioData.about;
@@ -19,10 +18,13 @@ const About = () => {
       <div className="flex flex-col md:flex-row items-center gap-12">
         <div className="md:w-1/3">
           <div className="w-full green-pink-gradient p-[1px] rounded-full shadow-card">
-            <img
-              src={myphoto}
+            <Image
+              src="/assets/img/myphoto.jpg"
               alt={portfolioData.hero.name}
               className="rounded-full w-48 h-48 md:w-64 md:h-64 mx-auto object-cover bg-tertiary"
+              width={256}
+              height={256}
+              priority
             />
           </div>
         </div>

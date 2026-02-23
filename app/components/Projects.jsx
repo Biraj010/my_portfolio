@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-import { portfolioData } from "../data";
+import { portfolioData } from "@/lib/data";
 
 const Projects = () => {
   const projects = portfolioData.projects;
@@ -36,10 +39,12 @@ const Projects = () => {
                 className="relative w-full h-[230px] cursor-pointer overflow-hidden rounded-2xl"
                 onClick={() => setLightboxIndex(index)}
               >
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover rounded-2xl group-hover:scale-110 transition-transform duration-500"
+                  fill
+                  className="object-cover rounded-2xl group-hover:scale-110 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
                 <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
                   <div

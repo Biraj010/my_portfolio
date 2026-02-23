@@ -1,0 +1,22 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="180" height="180" rx="40" fill="#915EFF"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="140" cy="40" r="20" fill="#804dee" opacity="0.3"/>
+  <circle cx="40" cy="140" r="30" fill="#804dee" opacity="0.2"/>
+  
+  <!-- Border -->
+  <rect x="5" y="5" width="170" height="170" rx="35" stroke="url(#appleGradient)" stroke-width="3" fill="none"/>
+  
+  <!-- Letters BR - Larger for Apple icon -->
+  <text x="90" y="115" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="white" text-anchor="middle">BR</text>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="appleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dfd9ff;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#915EFF;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

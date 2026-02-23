@@ -1,5 +1,8 @@
-import React, { useMemo, useState } from "react";
-import { portfolioData } from "../data";
+"use client";
+
+import { useMemo, useState } from "react";
+import Image from "next/image";
+import { portfolioData } from "@/lib/data";
 
 const Skills = () => {
   const skillsByCategory = portfolioData.skills;
@@ -52,6 +55,7 @@ const Skills = () => {
                   ? "bg-[#915EFF] border-[#915EFF] text-white"
                   : "bg-tertiary border-white-100/10 text-secondary hover:text-white"
               }`}
+              suppressHydrationWarning
             >
               {category}
             </button>
@@ -68,10 +72,12 @@ const Skills = () => {
             <div>
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 rounded-2xl bg-black-200 flex items-center justify-center p-2">
-                  <img
+                  <Image
                     src={skill.icon}
                     alt={skill.name}
                     className="w-8 h-8 object-contain"
+                    width={32}
+                    height={32}
                   />
                 </div>
                 <h3 className="text-white text-[18px] font-semibold">

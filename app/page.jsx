@@ -1,13 +1,13 @@
-import Footer from "./components/footer";
 import Header from "./components/Header";
-import Hero from "./pages/Hero";
-import About from "./pages/About";
-import Work from "./pages/Work";
-import Skills from "./pages/Skills";
-import Projects from "./pages/Projects";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Work from "./components/Work";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
-function App() {
+export default function Home() {
   return (
     <div className="relative z-0 bg-primary">
       <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
@@ -25,5 +25,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

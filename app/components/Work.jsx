@@ -1,5 +1,5 @@
-import React from "react";
-import { portfolioData } from "../data";
+import Image from "next/image";
+import { portfolioData } from "@/lib/data";
 
 const Work = () => {
   const { experiences, education, certifications } = portfolioData.work;
@@ -8,7 +8,7 @@ const Work = () => {
     <section id="work" className="py-20 max-w-7xl mx-auto px-6">
       <div className="mb-10">
         <p className="sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider">
-          Where I’ve worked
+          Where I've worked
         </p>
         <h2 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
           Experience.
@@ -53,10 +53,12 @@ const Work = () => {
                         className="flex items-center gap-2 bg-black-200/50 px-3 py-2 rounded-lg hover:bg-black-200/80 transition-colors"
                         title={tool.name}
                       >
-                        <img
+                        <Image
                           src={tool.icon}
                           alt={tool.name}
                           className="w-5 h-5 object-contain"
+                          width={20}
+                          height={20}
                         />
                         <span className="text-white-100 text-[13px]">{tool.name}</span>
                       </div>
@@ -99,4 +101,3 @@ const Work = () => {
 };
 
 export default Work;
-

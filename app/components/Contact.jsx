@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import { portfolioData } from "../data";
+"use client";
+
+import { useState } from "react";
+import { portfolioData } from "@/lib/data";
 
 const Contact = () => {
-  const { paragraph, whatsappUrl } = portfolioData.contact;
+  const { paragraph } = portfolioData.contact;
   const { personalInfo } = portfolioData.about;
   const [formData, setFormData] = useState({
     name: "",
@@ -23,7 +25,7 @@ const Contact = () => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +69,6 @@ const Contact = () => {
       </div>
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1.1fr)] md:grid-cols-2">
-        {/* Left column: contact info + availability */}
         <div className="space-y-6">
           <div>
             <h3 className="text-white font-semibold text-lg mb-2">
@@ -150,7 +151,6 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Right column: form */}
         <div className="rounded-3xl border border-white-100/10 bg-tertiary/80 shadow-card px-5 py-6 sm:px-7 sm:py-8">
           <h3 className="text-white font-semibold text-lg mb-4">
             Send a Message
@@ -170,6 +170,7 @@ const Contact = () => {
                   className="bg-primary border border-white-100/10 rounded-lg py-3 px-4 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#915EFF]"
                   required
                   disabled={isSubmitting}
+                  suppressHydrationWarning
                 />
               </div>
               <div>
@@ -185,6 +186,7 @@ const Contact = () => {
                   className="bg-primary border border-white-100/10 rounded-lg py-3 px-4 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#915EFF]"
                   required
                   disabled={isSubmitting}
+                  suppressHydrationWarning
                 />
               </div>
             </div>
@@ -201,6 +203,7 @@ const Contact = () => {
                 onChange={handleChange}
                 className="bg-primary border border-white-100/10 rounded-lg py-3 px-4 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#915EFF]"
                 disabled={isSubmitting}
+                suppressHydrationWarning
               />
             </div>
 
@@ -211,7 +214,7 @@ const Contact = () => {
               <textarea
                 name="message"
                 placeholder="Tell me about your project..."
-                rows="5"
+                rows={5}
                 value={formData.message}
                 onChange={handleChange}
                 className="bg-primary border border-white-100/10 rounded-lg py-3 px-4 w-full text-sm focus:outline-none focus:ring-2 focus:ring-[#915EFF]"
@@ -242,6 +245,7 @@ const Contact = () => {
                 className={`bg-[#2563eb] hover:bg-[#1d4ed8] text-white font-semibold py-3 px-8 rounded-lg transition-colors w-full flex items-center justify-center gap-2 ${
                   isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
                 }`}
+                suppressHydrationWarning
               >
                 {isSubmitting ? (
                   <>

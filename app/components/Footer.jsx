@@ -1,10 +1,9 @@
-import React from "react";
-import { portfolioData } from "../data";
+import { portfolioData } from "@/lib/data";
 
 const Footer = () => {
   const { socialLinks } = portfolioData.footer;
   const { personalInfo } = portfolioData.about;
-  const { whatsappUrl } = portfolioData.contact;
+  const whatsappUrl = portfolioData.contact?.whatsappUrl;
 
   return (
     <footer className="bg-primary py-12 mt-20 border-t border-white-100/10">
