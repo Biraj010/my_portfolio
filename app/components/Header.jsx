@@ -6,12 +6,12 @@ import { portfolioData } from "@/lib/data";
 
 const Header = () => {
   const { navLinks } = portfolioData.header;
-  const { name, titles } = portfolioData.hero;
+  const { name } = portfolioData.hero;
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sm:px-16 px-6 w-full flex items-center py-5 fixed top-0 z-20 bg-primary">
-      <div className="w-full flex justify-between items-center max-w-7xl mx-auto">
+    <header className="fixed top-0 z-30 w-full px-4 pt-4 sm:px-6">
+      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/10 bg-slate-950/70 px-4 py-3 shadow-[0_20px_60px_rgba(0,0,0,0.25)] backdrop-blur-xl sm:px-6">
         <Link
           to="home"
           className="flex items-center gap-2 cursor-pointer"
@@ -19,17 +19,21 @@ const Header = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <p className="text-white text-[18px] font-bold cursor-pointer flex">
-            {name} &nbsp;
-            <span className="sm:block hidden"> | {titles?.[0] ?? "Full-Stack Web Developer"}</span>
-          </p>
+          <div className="flex flex-col">
+            <span className="font-display text-[17px] font-bold text-white sm:text-[18px]">
+              {name}
+            </span>
+            <span className="hidden text-[11px] uppercase tracking-[0.24em] text-slate-400 sm:block">
+              Full-Stack Developer
+            </span>
+          </div>
         </Link>
 
-        <ul className="list-none hidden sm:flex flex-row gap-10">
+        <ul className="hidden list-none flex-row gap-8 sm:flex">
           {navLinks.map((link) => (
             <li
               key={link.text}
-              className={`text-secondary hover:text-white text-[18px] font-medium cursor-pointer transition-colors`}
+              className="cursor-pointer text-[15px] font-medium text-slate-300 transition-colors hover:text-white"
             >
               <Link
                 to={link.href.replace("#", "")}
@@ -47,20 +51,20 @@ const Header = () => {
 
         <div className="sm:hidden flex flex-1 justify-end items-center">
           <i
-            className={`bx ${isMobileMenuOpen ? "bx-x" : "bx-menu"
-              } text-[28px] object-contain cursor-pointer text-white`}
+            className={`bx ${isMobileMenuOpen ? "bx-x" : "bx-menu"} cursor-pointer text-[28px] text-white`}
             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
           ></i>
 
           <div
-            className={`${!isMobileMenuOpen ? "hidden" : "flex"
-              } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+            className={`${
+              !isMobileMenuOpen ? "hidden" : "flex"
+            } absolute right-0 top-16 z-10 mx-1 min-w-[180px] rounded-2xl border border-white/10 bg-slate-950/95 p-5 shadow-2xl`}
           >
             <ul className="list-none flex justify-end items-start flex-col gap-4">
               {navLinks.map((link) => (
                 <li
                   key={link.text}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] text-secondary hover:text-white transition-colors`}
+                  className="cursor-pointer text-[15px] font-medium text-slate-300 transition-colors hover:text-white"
                   onClick={() => {
                     setMobileMenuOpen(!isMobileMenuOpen);
                   }}

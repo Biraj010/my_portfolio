@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -8,15 +8,31 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Manrope", sans-serif;
   scroll-behavior: smooth;
   color-scheme: dark;
 }
 
 body {
-  @apply bg-primary text-white;
+  @apply text-white;
+  background:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.24), transparent 30%),
+    radial-gradient(circle at top right, rgba(16, 185, 129, 0.18), transparent 22%),
+    linear-gradient(180deg, #06111f 0%, #07101a 38%, #030712 100%);
   scrollbar-width: thin;
   scrollbar-color: rgba(170, 166, 195, 0.45) transparent;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+::selection {
+  background: rgba(37, 99, 235, 0.35);
+  color: #fff;
 }
 
 .hash-span {
@@ -32,15 +48,15 @@ body {
 }
 
 .violet-gradient {
-  background: #804dee;
-  background: linear-gradient(-90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
-  background: -webkit-linear-gradient(-90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
+  background: #2563eb;
+  background: linear-gradient(-90deg, #2563eb 0%, rgba(37, 99, 235, 0) 100%);
+  background: -webkit-linear-gradient(-90deg, #2563eb 0%, rgba(37, 99, 235, 0) 100%);
 }
 
 .green-pink-gradient {
-  background: #00cea8;
-  background: linear-gradient(90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
-  background: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
+  background: #0ea5e9;
+  background: linear-gradient(120deg, #0ea5e9 0%, #10b981 100%);
+  background: -webkit-linear-gradient(120deg, #0ea5e9 0%, #10b981 100%);
 }
 
 .orange-text-gradient {
@@ -73,6 +89,18 @@ body {
   background: linear-gradient(to top, #ec008c, #fc6767);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.section-shell {
+  @apply max-w-7xl mx-auto px-6;
+}
+
+.section-kicker {
+  @apply inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-300;
+}
+
+.panel-surface {
+  @apply border border-white/10 bg-white/[0.04] shadow-card backdrop-blur-sm;
 }
 
 canvas {
