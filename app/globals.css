@@ -9,18 +9,25 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Manrope", sans-serif;
-  scroll-behavior: smooth;
   color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   @apply text-white;
   background:
-    radial-gradient(circle at top left, rgba(37, 99, 235, 0.24), transparent 30%),
-    radial-gradient(circle at top right, rgba(16, 185, 129, 0.18), transparent 22%),
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.22), transparent 30%),
+    radial-gradient(circle at top right, rgba(16, 185, 129, 0.16), transparent 22%),
     linear-gradient(180deg, #06111f 0%, #07101a 38%, #030712 100%);
+  background-attachment: fixed;
   scrollbar-width: thin;
   scrollbar-color: rgba(170, 166, 195, 0.45) transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 h1,
@@ -28,6 +35,7 @@ h2,
 h3,
 .font-display {
   font-family: "Space Grotesk", sans-serif;
+  letter-spacing: -0.01em;
 }
 
 ::selection {
@@ -35,64 +43,8 @@ h3,
   color: #fff;
 }
 
-.hash-span {
-  margin-top: -100px;
-  padding-bottom: 100px;
-  display: block;
-}
-
-.black-gradient {
-  background: #000000;
-  background: -webkit-linear-gradient(to right, #434343, #000000);
-  background: linear-gradient(to right, #434343, #000000);
-}
-
-.violet-gradient {
-  background: #2563eb;
-  background: linear-gradient(-90deg, #2563eb 0%, rgba(37, 99, 235, 0) 100%);
-  background: -webkit-linear-gradient(-90deg, #2563eb 0%, rgba(37, 99, 235, 0) 100%);
-}
-
-.green-pink-gradient {
-  background: #0ea5e9;
-  background: linear-gradient(120deg, #0ea5e9 0%, #10b981 100%);
-  background: -webkit-linear-gradient(120deg, #0ea5e9 0%, #10b981 100%);
-}
-
-.orange-text-gradient {
-  background: #f12711;
-  background: -webkit-linear-gradient(to top, #f12711, #f5af19);
-  background: linear-gradient(to top, #f12711, #f5af19);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.green-text-gradient {
-  background: #11998e;
-  background: -webkit-linear-gradient(to top, #11998e, #38ef7d);
-  background: linear-gradient(to top, #11998e, #38ef7d);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.blue-text-gradient {
-  background: #56ccf2;
-  background: -webkit-linear-gradient(to top, #2f80ed, #56ccf2);
-  background: linear-gradient(to top, #2f80ed, #56ccf2);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.pink-text-gradient {
-  background: #ec008c;
-  background: -webkit-linear-gradient(to top, #ec008c, #fc6767);
-  background: linear-gradient(to top, #ec008c, #fc6767);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 .section-shell {
-  @apply max-w-7xl mx-auto px-6;
+  @apply max-w-7xl mx-auto px-5 sm:px-6;
 }
 
 .section-kicker {
@@ -103,8 +55,23 @@ h3,
   @apply border border-white/10 bg-white/[0.04] shadow-card backdrop-blur-sm;
 }
 
-canvas {
-  cursor: grab;
+.section-divider {
+  @apply mx-auto h-px max-w-5xl bg-gradient-to-r from-transparent via-white/10 to-transparent;
+}
+
+table {
+  border-spacing: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 ::-webkit-scrollbar {

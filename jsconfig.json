@@ -3,10 +3,7 @@
     "baseUrl": ".",
     "ignoreDeprecations": "6.0",
     "paths": {
-      "@/*": ["./*"],
-      "@/components/*": ["./app/components/*"],
-      "@/lib/*": ["./lib/*"],
-      "@/public/*": ["./public/*"]
+      "@/*": ["./*"]
     }
   },
   "exclude": ["node_modules", ".next"]

@@ -1,9 +1,14 @@
 import "./globals.css";
+import { siteUrl } from "@/lib/siteConfig";
+
+const title = "Biraj Regmi — Full Stack Developer | MERN Stack | Next.js";
+const description =
+  "Full-stack web developer with 3.5+ years of experience building responsive and scalable applications using React, Next.js, Node.js, Express, Prisma, PostgreSQL, and MongoDB. Experienced in REST APIs, Linux production servers, Nginx, Docker, and CI/CD.";
 
 export const metadata = {
-  title: "Biraj Regmi - Full Stack Developer | MERN Stack | Next.js",
-  description:
-    "Full-stack web developer with hands-on experience building responsive and scalable applications using React.js, Next.js, Node.js, Express, and MongoDB. Experienced in designing RESTful APIs, managing Linux-based production servers, configuring Nginx, and deploying applications to cloud environments and also in Blockchain and writing SmartContract in Ethereum Platform.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
   keywords: [
     "Biraj Regmi",
     "Full Stack Developer",
@@ -11,28 +16,29 @@ export const metadata = {
     "React Developer",
     "Next.js Developer",
     "Node.js Developer",
+    "PostgreSQL",
+    "Prisma",
     "MongoDB",
-    "Blockchain Developer",
-    "Solidity",
     "Web Developer Nepal",
     "Kathmandu Developer",
   ],
-  authors: [{ name: "Biraj Regmi" }],
+  authors: [{ name: "Biraj Regmi", url: siteUrl }],
   creator: "Biraj Regmi",
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://birajregmi.dev",
-    title: "Biraj Regmi - Full Stack Developer",
-    description:
-      "Full-stack web developer specializing in MERN stack, Next.js, and Blockchain development.",
+    url: siteUrl,
+    title,
+    description,
     siteName: "Biraj Regmi Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Biraj Regmi - Full Stack Developer",
-    description:
-      "Full-stack web developer specializing in MERN stack, Next.js, and Blockchain development.",
+    title,
+    description,
   },
   robots: {
     index: true,
@@ -54,6 +60,12 @@ export const metadata = {
     apple: "/apple-icon.svg",
   },
   manifest: "/manifest.json",
+};
+
+export const viewport = {
+  themeColor: "#0ea5e9",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }) {

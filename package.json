@@ -6,12 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "dev:backend": "cd ../contact_backend && npm start",
-    "dev:fullstack": "concurrently \"npm run dev:backend\" \"npm run dev\" --names \"backend,frontend\" --prefix-colors \"blue,green\""
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "^15.1.6",
+    "nodemailer": "^8.0.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-scroll": "^1.9.3",
@@ -23,7 +22,6 @@
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "autoprefixer": "^10.4.21",
-    "concurrently": "^9.2.1",
     "eslint": "^9.22.0",
     "eslint-config-next": "^15.1.6",
     "postcss": "^8.5.6",

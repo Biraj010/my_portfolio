@@ -3,11 +3,6 @@ const nextConfig = {
   // Suppress workspace root warning
   outputFileTracingRoot: __dirname,
   
-  // Environment variables
-  env: {
-    BACKEND_URL: process.env.BACKEND_URL || 'http://localhost:5000',
-  },
-  
   // Performance optimizations
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
