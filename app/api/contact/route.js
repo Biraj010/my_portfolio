@@ -1,82 +1,104 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
-export const maxDuration = 60; // Allow up to 60 seconds for cold starts
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const escapeHtml = (value = "") =>
+  String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 
 export async function POST(request) {
   try {
-    const body = await request.json();
-    
-    const backendUrl = process.env.BACKEND_URL || 'http://localhost:5000';
-    
-    // Increased timeout for Render cold starts (free tier can take 30-50 seconds)
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 55000); // 55 second timeout
-    
-    try {
-      const response = await fetch(`${backendUrl}/api/contact`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+    const body = await request.json().catch(() => null);
+    if (!body) {
+      return NextResponse.json(
+        { success: false, message: "Invalid request body." },
+        { status: 400 }
+      );
+    }
+
+    const name = String(body.name || "").trim();
+    const email = String(body.email || "").trim();
+    const phone = String(body.phone || "").trim();
+    const message = String(body.message || "").trim();
+
+    if (!name || !email || !message) {
+      return NextResponse.json(
+        { success: false, message: "Name, email, and message are required." },
+        { status: 400 }
+      );
+    }
+
+    if (!EMAIL_RE.test(email)) {
+      return NextResponse.json(
+        { success: false, message: "Please provide a valid email address." },
+        { status: 400 }
+      );
+    }
+
+    if (name.length > 120 || email.length > 160 || message.length > 5000) {
+      return NextResponse.json(
+        { success: false, message: "One of the fields is too long." },
+        { status: 400 }
+      );
+    }
+
+    const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_EMAIL } =
+      process.env;
+
+    if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Mail service is not configured. Please try again later.",
         },
-        body: JSON.stringify(body),
-        signal: controller.signal,
-      });
-
-      clearTimeout(timeoutId);
-
-      // Check if response is JSON
-      const contentType = response.headers.get('content-type');
-      if (!contentType || !contentType.includes('application/json')) {
-        console.error('Backend returned non-JSON response:', response.status, contentType);
-        const text = await response.text();
-        console.error('Response body:', text.substring(0, 200));
-        
-        return NextResponse.json(
-          { 
-            success: false, 
-            message: 'Backend service is unavailable. Please try again in a moment.' 
-          },
-          { status: 503 }
-        );
-      }
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        return NextResponse.json(
-          { success: false, message: data.message || 'Failed to send message' },
-          { status: response.status }
-        );
-      }
-
-      return NextResponse.json(data, { status: 200 });
-    } catch (fetchError) {
-      clearTimeout(timeoutId);
-      
-      if (fetchError.name === 'AbortError') {
-        console.error('Request timeout - backend may be waking up from sleep');
-        return NextResponse.json(
-          { 
-            success: false, 
-            message: 'Request timed out. The service may be starting up. Please try again.' 
-          },
-          { status: 504 }
-        );
-      }
-      
-      throw fetchError;
+        { status: 503 }
+      );
     }
-  } catch (error) {
-    // Log error in development only
-    if (process.env.NODE_ENV === 'development') {
-      console.error('API route error:', error);
-    }
-    
+
+    const port = Number(SMTP_PORT) || 587;
+    const transporter = nodemailer.createTransport({
+      host: SMTP_HOST,
+      port,
+      secure: port === 465,
+      auth: { user: SMTP_USER, pass: SMTP_PASS },
+    });
+
+    await transporter.sendMail({
+      from: `"${name.replace(/"/g, "'")}" <${SMTP_USER}>`,
+      to: CONTACT_EMAIL || SMTP_USER,
+      replyTo: email,
+      subject: `Portfolio Contact: ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "N/A"}\n\nMessage:\n${message}`,
+      html: `
+        <h3>New Contact Form Submission</h3>
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Phone:</strong> ${escapeHtml(phone || "N/A")}</p>
+        <hr/>
+        <p>${escapeHtml(message).replace(/\n/g, "<br/>")}</p>
+      `,
+    });
+
     return NextResponse.json(
-      { 
-        success: false, 
-        message: 'Failed to send message. Please try again later.',
-        hint: 'If this persists, the backend service may be starting up (this can take 30-60 seconds on first request).'
+      { success: true, message: "Message sent successfully!" },
+      { status: 200 }
+    );
+  } catch (error) {
+    if (process.env.NODE_ENV === "development") {
+      console.error("Contact form error:", error);
+    }
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Failed to send message. Please try again later.",
       },
       { status: 500 }
     );

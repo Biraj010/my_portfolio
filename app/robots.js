@@ -1,10 +1,13 @@
+import { siteUrl } from "@/lib/siteConfig";
+
 export default function robots() {
   return {
     rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: '/api/',
+      userAgent: "*",
+      allow: "/",
+      disallow: "/api/",
     },
-    sitemap: 'https://your-domain.com/sitemap.xml',
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }
