@@ -3,41 +3,68 @@ import { siteUrl } from "@/lib/siteConfig";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const title = "Biraj Regmi — Full Stack Developer | MERN Stack | Next.js";
-const description =
-  "Biraj Regmi — Full-stack developer in Kathmandu with 3.5+ yrs experience building scalable web apps with React, Next.js, Node.js, PostgreSQL, Docker & CI/CD.";
+const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION;
 
-const jsonLd = {
-  "@context": "https://schema.org",
+const title =
+  "Biraj Regmi — Full Stack Developer | React, Next.js & Node.js";
+const description =
+  "Full Stack Developer with 3.5+ years building scalable React, Next.js & Node.js apps. Hire Biraj Regmi — MERN stack expert from Kathmandu, Nepal.";
+
+const personSchema = {
   "@type": "Person",
+  "@id": `${siteUrl}/#person`,
   name: "Biraj Regmi",
+  alternateName: "Biraj",
   url: siteUrl,
+  image: `${siteUrl}/og-image.png`,
   jobTitle: "Full Stack Developer",
   description:
-    "Full-stack web developer with 3.5+ years of experience building responsive and scalable applications using React, Next.js, Node.js, Express, Prisma, PostgreSQL, and MongoDB.",
+    "Full Stack Developer with 3.5+ years of experience building scalable web applications using React, Next.js, Node.js, Express, Prisma, PostgreSQL, and MongoDB.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Kathmandu",
+    addressRegion: "Bagmati",
     addressCountry: "NP",
   },
   knowsAbout: [
     "React",
     "Next.js",
     "Node.js",
-    "Express",
+    "Express.js",
     "Prisma",
     "PostgreSQL",
     "MongoDB",
     "Docker",
     "Nginx",
+    "Linux",
     "CI/CD",
     "REST APIs",
     "MERN Stack",
+    "JavaScript",
+    "TypeScript",
+    "Web Development",
   ],
   sameAs: [
     "https://github.com/Biraj010",
     "https://linkedin.com/in/birajregmi",
   ],
+};
+
+const websiteSchema = {
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  url: siteUrl,
+  name: "Biraj Regmi — Full Stack Developer Portfolio",
+  description:
+    "Portfolio of Biraj Regmi, a Full Stack Developer specializing in React, Next.js, Node.js and the MERN stack.",
+  inLanguage: "en-US",
+  publisher: { "@id": `${siteUrl}/#person` },
+  author: { "@id": `${siteUrl}/#person` },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [personSchema, websiteSchema],
 };
 
 export const metadata = {
@@ -50,22 +77,14 @@ export const metadata = {
   keywords: [
     "Biraj Regmi",
     "Full Stack Developer",
+    "Full Stack Developer Nepal",
     "MERN Stack Developer",
     "React Developer",
     "Next.js Developer",
     "Node.js Developer",
-    "Express.js Developer",
-    "PostgreSQL Developer",
-    "Prisma Developer",
-    "MongoDB Developer",
-    "Docker Developer",
-    "Web Developer Nepal",
-    "Kathmandu Developer",
     "Hire Full Stack Developer",
     "Freelance Web Developer Nepal",
-    "Software Engineer Nepal",
-    "Backend Developer",
-    "Frontend Developer",
+    "Web Developer Kathmandu",
   ],
   authors: [{ name: "Biraj Regmi", url: siteUrl }],
   creator: "Biraj Regmi",
@@ -115,9 +134,11 @@ export const metadata = {
     apple: "/apple-icon.svg",
   },
   manifest: "/manifest.json",
-  verification: {
-    google: "your-google-verification-code",
-  },
+  ...(googleVerification && {
+    verification: {
+      google: googleVerification,
+    },
+  }),
   category: "technology",
 };
 
@@ -139,7 +160,6 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <meta name="google-site-verification" content="your-google-verification-code" />
       </head>
       <body>
         {children}
