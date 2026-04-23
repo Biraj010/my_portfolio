@@ -5,7 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const title = "Biraj Regmi — Full Stack Developer | MERN Stack | Next.js";
 const description =
-  "Hire Biraj Regmi — a full-stack web developer based in Kathmandu, Nepal with 3.5+ years of experience building responsive, scalable web applications using React, Next.js, Node.js, Express, Prisma, PostgreSQL, and MongoDB. Expert in REST APIs, Linux production servers, Nginx, Docker, and CI/CD pipelines.";
+  "Biraj Regmi — Full-stack developer in Kathmandu with 3.5+ yrs experience building scalable web apps with React, Next.js, Node.js, PostgreSQL, Docker & CI/CD.";
 
 const jsonLd = {
   "@context": "https://schema.org",
