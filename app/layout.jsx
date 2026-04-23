@@ -3,7 +3,9 @@ import { siteUrl } from "@/lib/siteConfig";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION;
+const googleVerification =
+  process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION ||
+  "JONLQ8ls2QcbwewbSPvDKC_NJUV5fBAM0ShCSSfuFyA";
 
 const title =
   "Biraj Regmi — Full Stack Developer | React, Next.js & Node.js";
