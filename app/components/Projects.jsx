@@ -1,10 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
 import { portfolioData } from "@/lib/data";
+
+const Lightbox = dynamic(() => import("./LightboxWrapper"), { ssr: false });
 
 const Projects = () => {
   const projects = portfolioData.projects;
@@ -88,8 +89,9 @@ const Projects = () => {
               >
                 <Image
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} — ${project.stack.slice(0, 3).join(", ")} project by Biraj Regmi`}
                   fill
+                  loading="lazy"
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes={
                     project.featured
@@ -190,11 +192,13 @@ const Projects = () => {
         ) : null}
       </section>
 
-      <Lightbox
-        open={lightboxIndex > -1}
-        close={() => setLightboxIndex(-1)}
-        slides={lightboxIndex > -1 ? projects[lightboxIndex].gallery : []}
-      />
+      {lightboxIndex > -1 && (
+        <Lightbox
+          open
+          close={() => setLightboxIndex(-1)}
+          slides={projects[lightboxIndex].gallery}
+        />
+      )}
     </>
   );
 };

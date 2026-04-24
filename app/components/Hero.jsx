@@ -50,16 +50,18 @@ const Hero = () => {
             <span className="bg-gradient-to-r from-sky-400 via-blue-400 to-emerald-400 bg-clip-text text-transparent">
               {name}
             </span>
-            .
+            <span className="mt-3 block text-[26px] font-bold text-slate-200 sm:text-[36px] lg:text-[44px]">
+              {role} in Kathmandu, Nepal
+            </span>
           </h1>
 
-          <div className="mt-4 text-lg font-semibold text-sky-300 sm:text-2xl">
-            <span className="text-slate-400">I&apos;m a </span>
-            <span className="text-white">{role}</span>
-          </div>
+          <h2 className="sr-only">
+            MERN Stack Developer — React, Next.js, Node.js, Express, Prisma,
+            PostgreSQL, MongoDB, Socket.IO, JWT, NextAuth, Docker, Linux, Nginx
+          </h2>
 
           <div className="mt-3 min-h-[30px] text-base text-slate-300 sm:text-lg">
-            <span ref={typedElement} />
+            <span ref={typedElement}>{titles[0]}</span>
           </div>
 
           <p className="mt-6 max-w-2xl text-[15.5px] leading-8 text-slate-300 sm:text-[17px]">
@@ -173,8 +175,8 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 via-transparent to-emerald-500/10" />
               <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-slate-950/70">
                 <Image
-                  src="/assets/img/myphoto.jpg"
-                  alt={name}
+                  src="/assets/img/biraj-regmi-full-stack-developer.jpg"
+                  alt={`${name} — Full Stack MERN Developer based in Kathmandu, Nepal`}
                   width={640}
                   height={720}
                   priority

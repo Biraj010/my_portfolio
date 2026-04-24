@@ -22,8 +22,8 @@ const About = () => {
           <div className="relative mx-auto w-fit">
             <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-sky-500 via-blue-500 to-emerald-500 opacity-70 blur-md" />
             <Image
-              src="/assets/img/myphoto.jpg"
-              alt={portfolioData.hero.name}
+              src="/assets/img/biraj-regmi-full-stack-developer.jpg"
+              alt={`${portfolioData.hero.name} — Full Stack MERN Developer from Kathmandu, Nepal`}
               className="relative mx-auto h-48 w-48 rounded-full border-4 border-slate-950 bg-tertiary object-cover md:h-56 md:w-56"
               width={224}
               height={224}

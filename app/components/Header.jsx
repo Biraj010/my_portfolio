@@ -20,10 +20,10 @@ const Header = () => {
   return (
     <header className="fixed top-0 z-30 w-full px-4 pt-4 sm:px-6">
       <div
-        className={`mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/10 px-4 py-3 transition-all sm:px-6 ${
+        className={`mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/10 px-4 py-3 transition-colors sm:px-6 ${
           scrolled
-            ? "bg-slate-950/85 shadow-[0_20px_60px_rgba(0,0,0,0.4)] backdrop-blur-xl"
-            : "bg-slate-950/70 shadow-[0_20px_60px_rgba(0,0,0,0.25)] backdrop-blur-xl"
+            ? "bg-slate-950/90 shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-md"
+            : "bg-slate-950/80 shadow-[0_12px_40px_rgba(0,0,0,0.2)]"
         }`}
       >
         <Link
@@ -45,25 +45,25 @@ const Header = () => {
           </div>
         </Link>
 
-        <ul className="hidden list-none flex-row gap-6 lg:flex">
-          {navLinks.map((link) => (
-            <li
-              key={link.text}
-              className="cursor-pointer text-[14px] font-semibold text-slate-300 transition-colors hover:text-white"
-            >
-              <Link
-                to={link.href.replace("#", "")}
-                smooth={true}
-                duration={500}
-                offset={-70}
-                spy={true}
-                activeClass="text-sky-300"
+        <nav aria-label="Main navigation" className="hidden lg:block">
+          <ul className="flex list-none flex-row gap-6">
+            {navLinks.map((link) => (
+              <li
+                key={link.text}
+                className="cursor-pointer text-[14px] font-semibold text-slate-300 transition-colors hover:text-white"
               >
-                {link.text}
-              </Link>
-            </li>
-          ))}
-        </ul>
+                <Link
+                  to={link.href.replace("#", "")}
+                  smooth={true}
+                  duration={500}
+                  offset={-70}
+                >
+                  {link.text}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
         <div className="hidden lg:block">
           <a
@@ -84,10 +84,11 @@ const Header = () => {
             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
           ></i>
 
-          <div
+          <nav
+            aria-label="Mobile navigation"
             className={`${
               !isMobileMenuOpen ? "hidden" : "flex"
-            } absolute right-4 top-16 z-10 min-w-[220px] rounded-2xl border border-white/10 bg-slate-950/95 p-5 shadow-2xl backdrop-blur-xl`}
+            } absolute right-4 top-16 z-10 min-w-[220px] rounded-2xl border border-white/10 bg-slate-950/95 p-5 shadow-2xl`}
           >
             <ul className="flex w-full list-none flex-col items-start gap-3">
               {navLinks.map((link) => (
@@ -101,8 +102,6 @@ const Header = () => {
                     smooth={true}
                     duration={500}
                     offset={-70}
-                    spy={true}
-                    activeClass="text-sky-300"
                     className="block w-full"
                   >
                     {link.text}
@@ -123,7 +122,7 @@ const Header = () => {
                 </a>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
       </div>
     </header>

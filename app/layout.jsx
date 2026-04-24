@@ -64,9 +64,78 @@ const websiteSchema = {
   author: { "@id": `${siteUrl}/#person` },
 };
 
+const professionalServiceSchema = {
+  "@type": "ProfessionalService",
+  "@id": `${siteUrl}/#service`,
+  name: "Biraj Regmi — Full Stack Web Development Services",
+  url: siteUrl,
+  image: `${siteUrl}/og-image.png`,
+  description:
+    "Freelance and contract Full Stack Web Development services by Biraj Regmi — specializing in MERN stack, React, Next.js, Node.js, Express, Prisma, PostgreSQL, MongoDB, and production deployments on Linux, Nginx, and Docker.",
+  provider: { "@id": `${siteUrl}/#person` },
+  areaServed: [
+    { "@type": "Country", name: "Nepal" },
+    { "@type": "Place", name: "Worldwide (Remote)" },
+  ],
+  serviceType: [
+    "Full Stack Web Development",
+    "MERN Stack Development",
+    "React and Next.js Development",
+    "Node.js and Express API Development",
+    "CMS and Admin Panel Development",
+    "DevOps and Deployment (Linux, Nginx, Docker)",
+  ],
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Kathmandu",
+    addressRegion: "Bagmati",
+    addressCountry: "NP",
+  },
+};
+
+const faqSchema = {
+  "@type": "FAQPage",
+  "@id": `${siteUrl}/#faq`,
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Is Biraj Regmi available for hire as a Full Stack Developer?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Biraj Regmi is available for full-time roles, freelance projects, and product collaborations — both remote and on-site in Kathmandu, Nepal.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What tech stack does Biraj Regmi specialize in?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Biraj specializes in the MERN stack — React, Next.js, Node.js, Express, and MongoDB — along with PostgreSQL, Prisma ORM, Socket.IO for real-time features, JWT and NextAuth authentication, and production deployment on Linux, Nginx, and Docker.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How many years of experience does Biraj Regmi have?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Biraj has 3.5+ years of experience shipping production web applications, including e-commerce storefronts, CMS platforms, press-release distribution systems, and real-time chat applications.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can Biraj Regmi work with international clients remotely?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Biraj works with clients worldwide on a remote basis and has delivered freelance projects for companies across Nepal, Australia, and beyond.",
+      },
+    },
+  ],
+};
+
 const jsonLd = {
   "@context": "https://schema.org",
-  "@graph": [personSchema, websiteSchema],
+  "@graph": [personSchema, websiteSchema, professionalServiceSchema, faqSchema],
 };
 
 export const metadata = {
