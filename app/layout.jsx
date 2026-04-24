@@ -72,18 +72,10 @@ const professionalServiceSchema = {
   image: `${siteUrl}/og-image.png`,
   description:
     "Freelance and contract Full Stack Web Development services by Biraj Regmi — specializing in MERN stack, React, Next.js, Node.js, Express, Prisma, PostgreSQL, MongoDB, and production deployments on Linux, Nginx, and Docker.",
-  provider: { "@id": `${siteUrl}/#person` },
+  founder: { "@id": `${siteUrl}/#person` },
   areaServed: [
     { "@type": "Country", name: "Nepal" },
     { "@type": "Place", name: "Worldwide (Remote)" },
-  ],
-  serviceType: [
-    "Full Stack Web Development",
-    "MERN Stack Development",
-    "React and Next.js Development",
-    "Node.js and Express API Development",
-    "CMS and Admin Panel Development",
-    "DevOps and Deployment (Linux, Nginx, Docker)",
   ],
   priceRange: "$$",
   address: {
@@ -91,6 +83,66 @@ const professionalServiceSchema = {
     addressLocality: "Kathmandu",
     addressRegion: "Bagmati",
     addressCountry: "NP",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Web Development Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Full Stack Web Development",
+          description:
+            "End-to-end product delivery using React, Next.js, Node.js, Express, and Prisma.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "MERN Stack Development",
+          description:
+            "Full MERN applications with MongoDB, Express, React, and Node.js.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "React and Next.js Development",
+          description:
+            "Modern, SEO-aware frontends built with React and Next.js.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Node.js and Express API Development",
+          description:
+            "Secure REST APIs with JWT, NextAuth, and real-time Socket.IO flows.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "CMS and Admin Panel Development",
+          description:
+            "Custom CMS architectures and admin dashboards with role-based access.",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "DevOps and Deployment",
+          description:
+            "Linux servers, Nginx reverse proxy, Docker, CI/CD, and DigitalOcean hosting.",
+        },
+      },
+    ],
   },
 };
 
